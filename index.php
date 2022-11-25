@@ -1,5 +1,7 @@
 <!-- Stampare tutti i nostri hotel con tutti i dati disponibili. -->
 <!-- Aggiungete Bootstrap e mostrate le informazioni con una tabella. -->
+<!-- Bonus:
+1 - Aggiungere un form ad inizio pagina che tramite una richiesta GET permetta di filtrare gli hotel che hanno un parcheggio. -->
 <?php
 $hotels = [
     [
@@ -38,16 +40,18 @@ $hotels = [
         'distance_to_center' => 50
     ],
 
-    // foreach ($hotels as $key => $value) {
-    //     echo $hotels[$key]['name'];
-    //     echo $hotels[$key]['description'];
-    //     echo $hotels[$key]['parking'];
-    //     echo $hotels[$key]['vote'];
-    //     echo $hotels[$key]['distance_to_center'];
-    //     echo "<br />";
-    // }
-
 ];
+
+$request_parking = $_GET["parking"] ?? "";
+$hotel_park = [];
+
+if ($request_parking === "si") {
+    echo "ok";
+} else {
+    echo "sbagliato";
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -64,6 +68,14 @@ $hotels = [
 
 <body>
     <main>
+        <!-- Filtro parcheggio -->
+        <form action="index.php" method="GET">
+            <label for="parking"></label>
+            <input type="text" name="parking" id="parking">
+            <button type="request-parking">Parcheggio</button>
+        </form>
+        <!-- /Filtro parcheggio -->
+        <!-- Tabella -->
         <table class="table">
             <thead>
                 <tr>
@@ -84,7 +96,13 @@ $hotels = [
                         <?php for ($i = 0; $i < 1; $i++) { ?>
                             <td> <?php echo $hotels[$key]['name'] . "<br />"; ?> </td>
                             <td><?php echo $hotels[$key]['description'] . "<br />"; ?></td>
-                            <td><?php echo $hotels[$key]['parking'] . "<br />"; ?></td>
+                            <td>
+                                <?php if ($hotels[$key]['parking'] === true) {
+                                    echo "si";
+                                } else {
+                                    echo "no";
+                                } ?>
+                            </td>
                             <td><?php echo $hotels[$key]['vote'] . "<br />"; ?></td>
                             <td><?php echo $hotels[$key]['distance_to_center'] . "<br />"; ?></td>
                         <?php } ?>
@@ -92,7 +110,7 @@ $hotels = [
                 <?php } ?>
             </tbody>
         </table>
-
+        <!-- / Tabella -->
     </main>
 </body>
 
