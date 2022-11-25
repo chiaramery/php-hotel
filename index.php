@@ -46,7 +46,7 @@ $request_parking = $_GET["parking"] ?? "";
 $hotel_park = [];
 
 if ($request_parking === "si") {
-    echo "ok";
+    // echo $hotel_park;
 } else {
     echo "sbagliato";
 }
@@ -99,6 +99,8 @@ if ($request_parking === "si") {
                             <td>
                                 <?php if ($hotels[$key]['parking'] === true) {
                                     echo "si";
+                                    $hotel_park[] = $hotels[$key]['name'];
+                                    // var_dump($hotel_park);
                                 } else {
                                     echo "no";
                                 } ?>
