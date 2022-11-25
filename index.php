@@ -64,15 +64,35 @@ $hotels = [
 
 <body>
     <main>
-        <?php
-        foreach ($hotels as $key => $value) {
-            echo "Nome Hotel:  " . $hotels[$key]['name'] . "<br />";
-            echo "Descrizione Hotel:  " . $hotels[$key]['description'] . "<br />";
-            echo "Parcheggio Hotel:  " . $hotels[$key]['parking'] . "<br />";
-            echo "Voto Hotel:  " . $hotels[$key]['vote'] . "<br />";
-            echo "Distanza Hotel dal centro:  " . $hotels[$key]['distance_to_center'] . "<br />" . "<br />";
-        }
-        ?>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Descrizione</th>
+                    <th scope="col">Parcheggio</th>
+                    <th scope="col">Voto</th>
+                    <th scope="col">Distanza Hotel dal centro</th>
+                </tr>
+            </thead>
+
+            <?php
+
+            ?>
+            <tbody>
+                <?php foreach ($hotels as $key => $value) { ?>
+                    <tr>
+                        <?php for ($i = 0; $i < 1; $i++) { ?>
+                            <td> <?php echo $hotels[$key]['name'] . "<br />"; ?> </td>
+                            <td><?php echo $hotels[$key]['description'] . "<br />"; ?></td>
+                            <td><?php echo $hotels[$key]['parking'] . "<br />"; ?></td>
+                            <td><?php echo $hotels[$key]['vote'] . "<br />"; ?></td>
+                            <td><?php echo $hotels[$key]['distance_to_center'] . "<br />"; ?></td>
+                        <?php } ?>
+                    </tr>
+                <?php } ?>
+            </tbody>
+        </table>
+
     </main>
 </body>
 
